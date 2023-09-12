@@ -39,127 +39,16 @@
         app:layout_constraintStart_toEndOf="@id/text_main_tab_carros"
         app:layout_constraintTop_toTopOf="@id/text_main_tab_carros"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_main_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main_lista_carros"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:cardCornerRadius="20dp"
-        android:elevation="10dp"
+        app:layout_constraintTop_toBottomOf="@id/text_main_tab_carros"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_main_tab_carros">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cardview_main_container_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/image_main_eletric_car"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:src="@drawable/eletric_car"
-                android:contentDescription="@string/carro_eletrico"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/text_main_label_preco"/>
-
-            <TextView
-                android:id="@+id/text_main_label_preco"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="@string/preco"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_main_eletric_car"/>
-
-            <TextView
-                android:id="@+id/text_main_label_preco_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="R$ 300.000,00"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintStart_toEndOf="@id/text_main_label_preco"
-                app:layout_constraintTop_toTopOf="@id/text_main_label_preco"/>
-
-            <TextView
-                android:id="@+id/text_main_label_bateria"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="@string/bateria"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintTop_toBottomOf="@id/text_main_label_preco"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                android:id="@+id/text_main_label_bateria_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="93,4 kW/h"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toTopOf="@id/text_main_label_bateria"
-                app:layout_constraintStart_toEndOf="@id/text_main_label_bateria"/>
-
-            <TextView
-                android:id="@+id/text_main_label_potencia"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="@string/potencia"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_main_label_bateria"/>
-
-            <TextView
-                android:id="@+id/text_main_label_potencia_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="646 cv"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@id/text_main_label_potencia"
-                app:layout_constraintTop_toTopOf="@id/text_main_label_potencia"/>
-
-            <TextView
-                android:id="@+id/text_main_label_recarga"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="@string/recarga"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_main_label_potencia"/>
-
-            <TextView
-                android:id="@+id/text_main_label_recarga_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23 min"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toTopOf="@id/text_main_label_recarga"
-                app:layout_constraintStart_toEndOf="@id/text_main_label_recarga"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintBottom_toTopOf="@id/button_main_navigate_calcular"
+        tools:listitem="@layout/carro_item"/>
 
 
     <Button

@@ -1,12 +1,10 @@
 package devandroid.felipe.eletriccarapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.core.widget.doOnTextChanged
+import androidx.appcompat.app.AppCompatActivity
 import devandroid.felipe.eletriccarapp.databinding.ActivityCalcularAutonomiaBinding
-import java.math.BigDecimal
 
 class CalcularAutonomia : AppCompatActivity(), TextWatcher {
 
@@ -17,8 +15,16 @@ class CalcularAutonomia : AppCompatActivity(), TextWatcher {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.editCalcularAutonomiaPrecoKwh.addTextChangedListener(this)
-        binding.editCalcularAutonomiaKmPercorrido.addTextChangedListener(this)
+        val editPreco = binding.editCalcularAutonomiaPrecoKwh
+        val editPercorrido = binding.editCalcularAutonomiaKmPercorrido
+        val buttonCalcular = binding.buttonCalcularAutonomiaCalcular
+
+        editPreco.addTextChangedListener(this)
+        editPercorrido.addTextChangedListener(this)
+
+        buttonCalcular.setOnClickListener {
+            calcularAutonomia(editPreco.text.toString(), editPercorrido.text.toString())
+        }
 
         binding.imageCalcularAutonomiaClose.setOnClickListener { finish() }
 
@@ -29,12 +35,12 @@ class CalcularAutonomia : AppCompatActivity(), TextWatcher {
     }
 
     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-        val editPreco = binding.editCalcularAutonomiaPrecoKwh.text.toString()
-        val editPercorrido = binding.editCalcularAutonomiaKmPercorrido.text.toString()
-        val buttonCalcular = binding.buttonCalcularAutonomiaCalcular
 
-        buttonCalcular.isEnabled = editPreco.isNotEmpty() && editPercorrido.isNotEmpty()
-        buttonCalcular.setOnClickListener { calcularAutonomia(editPreco, editPercorrido) }
+        val strEditPreco = binding.editCalcularAutonomiaPrecoKwh.text.toString()
+        val strEditPercorrido = binding.editCalcularAutonomiaKmPercorrido.text.toString()
+        val buttonCalcularAuto = binding.buttonCalcularAutonomiaCalcular
+
+        buttonCalcularAuto.isEnabled = strEditPreco.isNotEmpty() && strEditPercorrido.isNotEmpty()
     }
 
     override fun afterTextChanged(p0: Editable?) {
