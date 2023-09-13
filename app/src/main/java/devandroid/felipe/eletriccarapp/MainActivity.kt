@@ -1,29 +1,56 @@
 package devandroid.felipe.eletriccarapp
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import devandroid.felipe.eletriccarapp.adapter.CarAdapter
-import devandroid.felipe.eletriccarapp.data.listCars
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import devandroid.felipe.eletriccarapp.adapter.TabsAdapter
 import devandroid.felipe.eletriccarapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnTabSelectedListener {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-    private val adapter: CarAdapter = CarAdapter(listCars)
+
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager2
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.buttonMainNavigateCalcular.setOnClickListener {
-            startActivity(Intent(this, CalcularAutonomia::class.java))
-        }
 
-        binding.rvMainListaCarros.layoutManager = LinearLayoutManager(this)
-        binding.rvMainListaCarros.adapter = adapter
+        tabLayout = binding.tableMainOptions
+        viewPager = binding.vpMain
+
+        tabLayout.addOnTabSelectedListener(this)
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                tabLayout.getTabAt(position)?.select()
+            }
+        })
+
+        setupTabs()
+    }
+
+    override fun onTabSelected(tab: TabLayout.Tab?) {
+        tab?.let {
+            viewPager.currentItem = it.position
+        }
+    }
+
+    override fun onTabUnselected(tab: TabLayout.Tab?) {
+    }
+
+    override fun onTabReselected(tab: TabLayout.Tab?) {
+    }
+
+    private fun setupTabs() {
+        val tabsAdapter = TabsAdapter(this)
+        viewPager.adapter = tabsAdapter
     }
 }

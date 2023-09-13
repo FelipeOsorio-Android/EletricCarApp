@@ -9,5 +9,12 @@ val listCars = listOf(
         potencia = "200cv",
         recarga = "30 min",
         urlImage = "null"
+    ),
+    CarModel(
+        preco = "R$ 200.000,00",
+        bateria = "200 kWh",
+        potencia = "150cv",
+        recarga = "20 min",
+        urlImage = "null"
     )
 )
