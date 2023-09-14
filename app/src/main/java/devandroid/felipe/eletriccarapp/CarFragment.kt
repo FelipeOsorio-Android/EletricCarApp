@@ -1,6 +1,7 @@
 package devandroid.felipe.eletriccarapp
 
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +25,8 @@ class CarFragment : Fragment() {
     ): View {
         _binding = CarFragmentBinding.inflate(inflater, container, false)
 
-        binding.rvMainListaCarros.layoutManager = LinearLayoutManager(context)
-        binding.rvMainListaCarros.adapter = adapter
+        binding.rvCarFragmentListaCarros.layoutManager = LinearLayoutManager(context)
+        binding.rvCarFragmentListaCarros.adapter = adapter
 
         return binding.root
     }
@@ -33,7 +34,7 @@ class CarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonMainNavigateCalcular.setOnClickListener {
+        binding.fabCarFragmentCalcular.setOnClickListener {
             startActivity(Intent(context, CalcularAutonomia::class.java))
         }
     }
